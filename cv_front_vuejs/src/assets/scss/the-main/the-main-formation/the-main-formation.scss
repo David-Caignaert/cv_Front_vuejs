@@ -1,0 +1,13 @@
+// parti formations
+.main__formation {
+  padding-top: 3rem;
+  display: grid;
+  grid: " main__formation__p1 main__formation__p2" 0.8fr / 20rem;
+}
+.main__formation__p1 {
+  grid-area: main__formation__p1;
+  padding-left: 1rem;
+}
+.main__formation__p2 {
+  grid-area: main__formation__p2;
+}

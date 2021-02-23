@@ -1,0 +1,12 @@
+.thePicture {
+  grid-area: thePicture;
+  background-image: url(../../photo-david-caignaert.jpg);
+  background-position: center center;
+  background-size: cover;
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  border: groove;
+  margin: auto;
+  margin-top: 2.2rem;
+}

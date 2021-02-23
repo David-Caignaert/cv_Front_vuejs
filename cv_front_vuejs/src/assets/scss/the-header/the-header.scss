@@ -1,0 +1,16 @@
+.theHeader {
+  grid-area: theHeader;
+  min-height: 25rem;
+}
+h1 {
+  font-size: 5rem;
+}
+h2 {
+  font-size: 3rem;
+}
+h1,
+h2 {
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 3rem;
+}
