@@ -1,4 +1,6 @@
 @import "./the-main-formation/the-main-formation.scss";
+@import "./the-main-experience-pro/the-main-experience-pro.scss";
+@import "./the-main-centre-interet/the-main-centre-interet.scss";
 .theMain {
   grid-area: theMain;
 }
@@ -23,21 +25,4 @@ p {
 .main__h1 {
   margin: 0;
   display: flex;
-}
-/* .main__formation,
-.main__experience {
-  padding-top: 3rem;
-} */
-
-//parti expériences
-.main__experience div {
-  display: grid;
-  grid: " main__experience__p1 main__experience__p2" 0.8fr / 20rem;
-}
-.main__experience__p1 {
-  grid-area: main__experience__p1;
-  padding-left: 1rem;
-}
-.main__experience__p2 {
-  grid-area: main__experience__p2;
 }
