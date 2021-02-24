@@ -32,3 +32,11 @@ a {
 img {
   max-width: 100%;
 }
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.haut_de_page_fixe {
+  display: flex;
+}
