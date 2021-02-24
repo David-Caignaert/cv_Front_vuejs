@@ -1,7 +1,12 @@
 <template>
   <div class="theAside colorLightGrey bgCyanBlue">
     <div class="candidat_contenu">
-      <h1>Information personnel</h1>
+      <h1>
+        Information personnel
+      </h1>
+      <router-link to="/Create"
+        ><i class="fas fa-plus colorLightGrey"></i
+      ></router-link>
       <hr />
       <div class="candidat">
         <p>{{ ageCandidat() }} ans</p>

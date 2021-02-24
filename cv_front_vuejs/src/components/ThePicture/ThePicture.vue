@@ -1,6 +1,6 @@
 <template>
-  <div class="bgCyanBlue">
-    <div class="thePicture"></div>
+  <div class="bgCyanBlue thePicture">
+    <div class="portrait"></div>
   </div>
 </template>
 
