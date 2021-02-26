@@ -7,7 +7,8 @@
 
 <script>
 export default {
-  data() {
+  props: ["candidats"],
+  /*  data() {
     return {
       candidat: {},
     };
@@ -22,7 +23,7 @@ export default {
           console.log("candidat", this.candidat)
         )
       );
-  },
+  }, */
 };
 </script>
 

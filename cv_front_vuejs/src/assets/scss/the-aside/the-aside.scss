@@ -1,17 +1,27 @@
 .theAside {
-  grid-area: theAside;
+  flex: 1;
 }
-h1 {
-  font-size: 2.5rem;
+.theAside h1 {
+  font-size: 2rem;
   text-transform: uppercase;
   text-align: center;
   padding-top: 4rem;
 }
-p {
+.theAside p {
   font-size: 1.8rem;
   padding-top: 4rem;
   text-align: center;
 }
-hr {
+.theAside hr {
   margin: 1rem;
+}
+.theAside__competence {
+  display: flex;
+}
+.theAside__competence i {
+  font-size: 1.5rem;
+}
+.theAside__competence a {
+  margin-top: 43px;
+  padding: 1rem;
 }

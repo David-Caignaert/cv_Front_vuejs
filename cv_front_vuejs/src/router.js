@@ -1,9 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "./views/Home.vue";
-import Update from "./views/Update.vue";
-import Create from "./views/Create.vue";
-import Delete from "./views/Delete.vue";
+import LanguageProgrammationCreate from "./components/LanguageProgrammation/LanguageProgrammationCreate.vue";
 
 Vue.use(VueRouter);
 
@@ -14,16 +12,8 @@ export default new VueRouter({
       component: Home,
     },
     {
-      path: "/Update",
-      component: Update,
-    },
-    {
-      path: "/Create",
-      component: Create,
-    },
-    {
-      path: "/Delete",
-      component: Delete,
+      path: "/LanguageProgrammationCreate",
+      component: LanguageProgrammationCreate,
     },
   ],
 });

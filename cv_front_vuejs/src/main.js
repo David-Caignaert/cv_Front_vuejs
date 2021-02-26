@@ -2,11 +2,12 @@ import Vue from "vue";
 import router from "./router";
 import App from "./App.vue";
 import axios from "axios";
+import store from "./store/store";
 
 Vue.config.productionTip = false;
 //La base de l'url de mon API
 axios.defaults.baseURL = "http://localhost/CV_back_end/";
-//déclaration de l'interception de la requete
+/* //déclaration de l'interception de la requete
 axios.interceptors.request.use((requete) => {
   console.log("requeteAxios", requete);
   return requete;
@@ -15,11 +16,12 @@ axios.interceptors.request.use((requete) => {
 axios.interceptors.response.use((response) => {
   console.log("responseAxios", response);
   return response;
-});
+}); */
 //Associer axios au prototype http
 Vue.prototype.$http = axios;
 
 new Vue({
-  router: router,
+  router,
+  store,
   render: (h) => h(App),
 }).$mount("#app");

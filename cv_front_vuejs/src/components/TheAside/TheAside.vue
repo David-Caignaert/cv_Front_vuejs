@@ -4,9 +4,6 @@
       <h1>
         Information personnel
       </h1>
-      <router-link to="/Create"
-        ><i class="fas fa-plus colorLightGrey"></i
-      ></router-link>
       <hr />
       <div class="candidat">
         <p>{{ ageCandidat() }} ans</p>
@@ -19,7 +16,12 @@
       </div>
     </div>
     <div>
-      <h1>Compétence programmation</h1>
+      <div class="theAside__competence">
+        <h1>Compétence programmation</h1>
+        <router-link to="/LanguageProgrammationCreate"
+          ><i class="fas fa-plus colorLightGrey"></i
+        ></router-link>
+      </div>
       <hr />
 
       <p
@@ -34,6 +36,7 @@
 
 <script>
 export default {
+  props: ["candidats"],
   data() {
     return {
       candidat: {},
