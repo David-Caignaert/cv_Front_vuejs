@@ -2,13 +2,9 @@
   <div>
     <form @submit="ValiderCréation()">
       <h1>Ajouter un Language de programmation</h1>
-      <label>Nom</label>
+      <label>Intitulé du language de programmation</label>
       <br />
-      <input v-model="formLang.nom" type="text" />
-      <br /><br />
-      <label>Logo</label>
-      <br />
-      <input v-model="formLang.logo" type="text" />
+      <input v-model="formCentre.intitule" type="text" />
       <br /><br />
       <ul v-if="errors.length">
         <li class="text-danger" v-for="error in errors" :key="error">
@@ -26,18 +22,17 @@ import { mapActions } from "vuex";
 export default {
   data() {
     return {
-      formLang: {
-        nom: "",
-        logo: "",
+      formCentre: {
+        intitule: "",
       },
       errors: [],
     };
   },
   methods: {
-    ...mapActions(["createLanguageProgrammation"]),
+    ...mapActions(["createCentreInteret"]),
     ValiderCréation() {
       if (this.formValider()) {
-        this.createLanguageProgrammation({ ...this.formLang });
+        this.createCentreInteret({ ...this.formCentre });
 
         this.$router.push("/");
         location.reload();
@@ -45,11 +40,8 @@ export default {
     },
     formValider() {
       this.errors = [];
-      if (!this.formLang.nom) {
-        this.errors.push("Remplir le champ Nom");
-      }
-      if (!this.formLang.logo) {
-        this.errors.push("Remplir le champ Nom");
+      if (!this.formCentre.intitule) {
+        this.errors.push("Remplir le champ intitule");
       }
 
       return this.errors.length ? false : true;

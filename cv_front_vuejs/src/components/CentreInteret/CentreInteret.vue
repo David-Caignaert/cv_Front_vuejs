@@ -1,37 +1,21 @@
 <template>
   <div>
     <div class="main__h1">
-      <i class="fas fa-mug-hot"></i>
+      <i class="fas fa-mug-hot theMaini"></i>
       <h1 class="main__h1">Centre d'interet</h1>
+      <router-link to="/CentreInteretCreate"
+        ><i class="fas fa-plus colorCyanBlue theMaini"></i
+      ></router-link>
     </div>
-    <div
-      v-for="centre in candidat.lesCentreInteret"
-      :key="centre.id"
-      class="main__centre__interet"
-    >
-      <p class="main__centre__interet__p1">{{ centre.intitule }}</p>
-    </div>
+    <centre-interet-list :candidats="candidats"></centre-interet-list>
   </div>
 </template>
 
 <script>
+import CentreInteretList from "./CentreInteretList.vue";
 export default {
-  data() {
-    return {
-      candidat: {},
-    };
-  },
-  mounted() {
-    this.$http
-      .get("get/getCandidat.php?id=1")
-      .then(
-        (response) => (
-          console.log("responseNom", response.data.nom),
-          (this.candidat = response.data),
-          console.log("candidat", this.candidat)
-        )
-      );
-  },
+  components: { CentreInteretList },
+  props: ["candidats"],
 };
 </script>
 

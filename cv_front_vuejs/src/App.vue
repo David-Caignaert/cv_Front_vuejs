@@ -5,7 +5,7 @@
       <the-header :candidats="candidats"></the-header>
     </div>
     <div>
-      <router-view></router-view>
+      <router-view :candidats="candidats"></router-view>
     </div>
   </div>
 </template>
@@ -13,18 +13,17 @@
 <script>
 import TheHeader from "./components/TheHeader/TheHeader.vue";
 import ThePicture from "./components/ThePicture/ThePicture.vue";
-import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   name: "App",
 
   components: { TheHeader, ThePicture },
   computed: {
-    ...mapState("candidat", {
-      candidats: "datas",
-    }),
+    ...mapGetters("candidat", { candidats: "lesCandidats" }),
   },
-  created() {
-    this.$store.dispatch("candidat/fetchDatas");
+
+  mounted() {
+    this.$store.dispatch("candidat/getCandidats");
   },
 };
 </script>

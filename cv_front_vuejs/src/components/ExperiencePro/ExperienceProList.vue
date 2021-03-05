@@ -1,9 +1,20 @@
 <template>
-  <div></div>
+  <div>
+    <experience-pro-item
+      class="main__experience"
+      v-for="item in candidats[11]"
+      :key="item.id"
+      :item="item"
+      :idIndex="candidats[11].indexOf(item)"
+    >
+    </experience-pro-item>
+  </div>
 </template>
-
 <script>
-export default {};
+import ExperienceProItem from "./ExperienceProItem.vue";
+export default {
+  props: ["candidats"],
+  components: { ExperienceProItem },
+};
 </script>
-
-<style></style>
+<style scoped></style>

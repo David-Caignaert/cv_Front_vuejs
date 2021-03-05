@@ -1,14 +1,18 @@
 <template>
   <div>
-    <div class="flex">
-      <p class="main__centre__interet__p1">{{ item.intitule }}</p>
-      <button @click="messageConfirmerEffecement()">
-        <i class="fas fa-trash-alt ispe"></i>
-      </button>
-      <button @click="avitiveModif()"><i class="fas fa-pen"></i></button>
+    <div>
+      <p>
+        {{ item.logo }} {{ item.nom }}
+        <button @click="messageConfirmerEffecement()">
+          <i class="fas fa-trash-alt ispe"></i>
+        </button>
+        <button @click="avitiveModif()"><i class="fas fa-pen"></i></button>
+      </p>
     </div>
+
     <div v-if="afficherModification">
-      <input type="text" v-model="item.intitule" />
+      <input type="text" v-model="item.logo" />
+      <input type="text" v-model="item.nom" />
       <button @click="validerModification()">
         <i class="fas fa-check"></i>
       </button>
@@ -52,10 +56,12 @@ export default {
     effacerItem() {
       const parmas = new FormData();
       parmas.append("id", this.item.id);
-      axios.post("delete/deleteCentreInteret.php", parmas).then((response) => {
-        console.log("delCentre", response);
-        location.reload();
-      });
+      axios
+        .post("delete/deletelanguageProgrammation.php", parmas)
+        .then((response) => {
+          console.log("delLang", response);
+          location.reload();
+        });
     },
     avitiveModif() {
       return (this.afficherModification = true);
@@ -63,12 +69,15 @@ export default {
     validerModification() {
       const parmas = new FormData();
       parmas.append("id", this.item.id);
-      parmas.append("intitule", this.item.intitule);
+      parmas.append("logo", this.item.logo);
+      parmas.append("nom", this.item.nom);
       console.log("params", parmas);
-      axios.post("update/updateCentreInteret.php", parmas).then((response) => {
-        console.log("modCentre", response);
-        location.reload();
-      });
+      axios
+        .post("update/updatelanguageProgrammation.php", parmas)
+        .then((response) => {
+          console.log("modLang", response);
+          location.reload();
+        });
     },
     deactiveModif() {
       location.reload();

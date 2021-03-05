@@ -1,12 +1,13 @@
-import mutations from "./languageProgrammation.mutations";
-import actions from "./languageProgrammation.actions";
-import getters from "./languageProgrammation.getters";
+import mutations from "./languageProgrammation.mutations.js";
+import actions from "./languageProgrammation.actions.js";
+//import getters from "./languageProgrammation.getters";
 
 export default {
+  namespaced: true,
   state: {
-    candidats: [],
+    languageProgrammations: [],
   },
   mutations,
   actions,
-  getters,
+  //getters,
 };

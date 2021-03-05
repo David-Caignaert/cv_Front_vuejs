@@ -2,42 +2,21 @@
   <!-- partie expériences-->
   <div>
     <div class="main__h1">
-      <i class="fas fa-user-tie"></i>
+      <i class="fas fa-user-tie theMaini"></i>
       <h1 class="main__h1">expérience professionnelle</h1>
+      <router-link to="/ExperienceProCreate"
+        ><i class="fas fa-plus colorCyanBlue theMaini"></i
+      ></router-link>
     </div>
-    <div
-      v-for="experience in candidat.lesExperiencesPro"
-      :key="experience.id"
-      class="main__experience"
-    >
-      <p class="main__experience__p1">
-        {{ experience.dateDebut }} - {{ experience.dateFin }}
-      </p>
-      <p class="main__experience__p2">
-        {{ experience.intitule }},{{ experience.ville }} {{ experience.lieu }}
-      </p>
-    </div>
+    <experience-pro-list :candidats="candidats"></experience-pro-list>
   </div>
 </template>
 
 <script>
+import ExperienceProList from "./ExperienceProList.vue";
 export default {
-  data() {
-    return {
-      candidat: {},
-    };
-  },
-  mounted() {
-    this.$http
-      .get("get/getCandidat.php?id=1")
-      .then(
-        (response) => (
-          console.log("responseNom", response.data.nom),
-          (this.candidat = response.data),
-          console.log("candidat", this.candidat)
-        )
-      );
-  },
+  components: { ExperienceProList },
+  props: ["candidats"],
 };
 </script>
 

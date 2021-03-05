@@ -1,4 +1,5 @@
-import Vue from "vue";
-import Vuex from "vuex";
+const lesCandidats = (state) => state.candidats;
 
-Vue.use(Vuex);
+export default {
+  lesCandidats,
+};

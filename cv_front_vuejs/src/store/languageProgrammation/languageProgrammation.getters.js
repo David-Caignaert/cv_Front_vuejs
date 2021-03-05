@@ -1,4 +1,5 @@
-import Vue from "vue";
-import Vuex from "vuex";
+const lesLanguageProgrammations = (state) => state.languageProgrammations;
 
-Vue.use(Vuex);
+export default {
+  lesLanguageProgrammations,
+};

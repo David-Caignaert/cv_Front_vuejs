@@ -1,12 +1,13 @@
 import mutations from "./centreInteret.mutations";
 import actions from "./centreInteret.actions";
-import getters from "./centreInteret.getters";
+//import getters from "./centreInteret.getters";
 
 export default {
   state: {
-    candidats: [],
+    namespaced: true,
+    centreInterets: [],
   },
   mutations,
   actions,
-  getters,
+  //getters,
 };

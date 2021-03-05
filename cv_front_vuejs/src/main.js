@@ -1,8 +1,10 @@
 import Vue from "vue";
-import router from "./router";
 import App from "./App.vue";
+import * as Filters from "./utils/filters";
 import axios from "axios";
-import store from "./store/store";
+import router from "./router.js";
+import store from "./store/store.js";
+import Sweet from "vue-sweetalert2";
 
 Vue.config.productionTip = false;
 //La base de l'url de mon API
@@ -19,6 +21,11 @@ axios.interceptors.response.use((response) => {
 }); */
 //Associer axios au prototype http
 Vue.prototype.$http = axios;
+
+Object.keys(Filters).forEach((f) => {
+  Vue.filter(f, Filters[f]);
+});
+Vue.use(Sweet);
 
 new Vue({
   router,
