@@ -2,10 +2,12 @@
   <div>
     <div class="flex">
       <p class="main__centre__interet__p1">{{ item.intitule }}</p>
-      <button @click="messageConfirmerEffecement()">
-        <i class="fas fa-trash-alt ispe"></i>
-      </button>
-      <button @click="avitiveModif()"><i class="fas fa-pen"></i></button>
+      <div class="main__centre__interet__i">
+        <button @click="messageConfirmerEffecement()">
+          <i class="fas fa-trash-alt ispe"></i>
+        </button>
+        <button @click="avitiveModif()"><i class="fas fa-pen"></i></button>
+      </div>
     </div>
     <div v-if="afficherModification">
       <input type="text" v-model="item.intitule" />

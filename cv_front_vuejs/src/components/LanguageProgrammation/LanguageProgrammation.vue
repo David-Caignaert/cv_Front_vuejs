@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="theAside__competence">
-      <div>
+      <div class="flex">
         <h1>Compétence programmation</h1>
         <router-link to="/LanguageProgrammationCreate"
           ><i class="fas fa-plus colorLightGrey"></i

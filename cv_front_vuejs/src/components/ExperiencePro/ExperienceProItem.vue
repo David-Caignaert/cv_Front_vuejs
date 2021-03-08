@@ -13,6 +13,7 @@
       <button @click="avitiveModif()"><i class="fas fa-pen"></i></button>
     </div>
     <div v-if="afficherModification">
+      <p>Modifier l'experience pro :</p>
       <input type="text" v-model="item.dateDebut" />
       <input type="text" v-model="item.dateFin" />
       <input type="text" v-model="item.intitule" />
@@ -23,6 +24,15 @@
         <i class="fas fa-check"></i>
       </button>
       <button @click="deactiveModif()"><i class="fas fa-times"></i></button>
+    </div>
+    <div v-if="afficherConfirmerEffecement">
+      <p>Voulez-vous vraiment effacer?</p>
+      <button @click="effacerItem()">
+        <i class="fas fa-check"></i>
+      </button>
+      <button @click="deactiveModif()">
+        <i class="fas fa-times"></i>
+      </button>
     </div>
   </div>
 </template>
@@ -35,30 +45,12 @@ export default {
   data() {
     return {
       afficherModification: false,
+      afficherConfirmerEffecement: false,
     };
   },
   methods: {
     messageConfirmerEffecement() {
-      this.$swal
-        .fire({
-          text: "Voulez-vous effacer ce languague programmation?",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "oui,supprimer!",
-          position: "center",
-        })
-        .then((result) => {
-          if (result.isConfirmed) {
-            this.effacerItem();
-            this.$Swal.fire(
-              "Deleted!",
-              "Your file has been deleted.",
-              "success"
-            );
-          }
-        });
+      return (this.afficherConfirmerEffecement = true);
     },
     effacerItem() {
       const parmas = new FormData();

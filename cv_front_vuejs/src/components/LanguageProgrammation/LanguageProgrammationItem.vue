@@ -1,22 +1,38 @@
 <template>
   <div>
-    <div>
-      <p>
-        {{ item.logo }} {{ item.nom }}
+    <div class="flex">
+      <div class=" theAside__competence__div__for">
+        <p class="theAside__competence_p">{{ item.logo }} {{ item.nom }}</p>
+      </div>
+      <div>
         <button @click="messageConfirmerEffecement()">
-          <i class="fas fa-trash-alt ispe"></i>
+          <i class="fas fa-trash-alt ispe bgLightGrey"></i>
         </button>
         <button @click="avitiveModif()"><i class="fas fa-pen"></i></button>
-      </p>
+      </div>
     </div>
+    <div>
+      <div v-if="afficherModification">
+        <p>Modifier le language de programmation :</p>
+        <input type="text" v-model="item.logo" />
+        <input type="text" v-model="item.nom" />
+        <button @click="validerModification()">
+          <i class="fas fa-check"></i>
+        </button>
+        <button @click="deactiveModif()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
 
-    <div v-if="afficherModification">
-      <input type="text" v-model="item.logo" />
-      <input type="text" v-model="item.nom" />
-      <button @click="validerModification()">
-        <i class="fas fa-check"></i>
-      </button>
-      <button @click="deactiveModif()"><i class="fas fa-times"></i></button>
+      <div v-if="afficherConfirmerEffecement">
+        <p>Voulez-vous vraiment effacer?</p>
+        <button @click="effacerItem()">
+          <i class="fas fa-check"></i>
+        </button>
+        <button @click="deactiveModif()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -28,30 +44,12 @@ export default {
   data() {
     return {
       afficherModification: false,
+      afficherConfirmerEffecement: false,
     };
   },
   methods: {
     messageConfirmerEffecement() {
-      this.$swal
-        .fire({
-          text: "Voulez-vous effacer ce languague programmation?",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "oui,supprimer!",
-          position: "center",
-        })
-        .then((result) => {
-          if (result.isConfirmed) {
-            this.effacerItem();
-            this.$Swal.fire(
-              "Deleted!",
-              "Your file has been deleted.",
-              "success"
-            );
-          }
-        });
+      return (this.afficherConfirmerEffecement = true);
     },
     effacerItem() {
       const parmas = new FormData();

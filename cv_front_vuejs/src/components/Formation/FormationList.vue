@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import formationItem from "./formationItem.vue";
+import formationItem from "./FormationItem.vue";
 export default {
   props: ["candidats"],
   components: { formationItem },

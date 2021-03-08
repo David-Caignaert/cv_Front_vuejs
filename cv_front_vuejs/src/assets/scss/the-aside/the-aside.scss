@@ -9,8 +9,10 @@
 }
 .theAside p {
   font-size: 1.8rem;
-  padding-top: 4rem;
   text-align: center;
+}
+.theAside__p {
+  padding-top: 4rem;
 }
 .theAside hr {
   margin: 1rem;
@@ -18,10 +20,18 @@
 .theAside__competence {
   justify-content: center;
 }
+.theAside__competence__div__for {
+  flex: 1;
+  padding: 2rem;
+}
 .theAside__competence i {
   font-size: 1.5rem;
 }
 .theAside__competence a {
   margin-top: 43px;
   padding: 1rem;
+}
+.theAside__competence_p {
+  flex: 1;
+  margin: 0;
 }

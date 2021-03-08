@@ -6,11 +6,13 @@
       </h1>
       <hr />
       <div class="candidat">
-        <p>{{ ageCandidat() }} ans</p>
-        <p>{{ candidats[9] }}</p>
-        <p>{{ candidats[3] }} {{ candidats[8] }} {{ candidats[5] }}</p>
-        <p>{{ candidats[4] }}</p>
-        <p>{{ candidats[7] }}</p>
+        <p class="theAside__p">{{ ageCandidat() }} ans</p>
+        <p class="theAside__p">{{ candidats[9] }}</p>
+        <p class="theAside__p">
+          {{ candidats[3] }} {{ candidats[8] }} {{ candidats[5] }}
+        </p>
+        <p class="theAside__p">{{ candidats[4] }}</p>
+        <p class="theAside__p">{{ candidats[7] }}</p>
       </div>
     </div>
   </div>

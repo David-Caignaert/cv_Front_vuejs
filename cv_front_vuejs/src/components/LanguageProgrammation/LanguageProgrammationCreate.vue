@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import axios from "axios";
 
 export default {
   data() {
@@ -34,13 +34,23 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["createLanguageProgrammation"]),
     ValiderCréation() {
       if (this.formValider()) {
-        this.createLanguageProgrammation({ ...this.formLang });
-
-        this.$router.push("/");
-        location.reload();
+        const params = new FormData();
+        console.log(this.formLang.logo);
+        console.log(this.formLang.nom);
+        params.append("logo", this.formLang.logo);
+        params.append("nom", this.formLang.nom);
+        axios
+          .post("create/createLanguageProgrammation.php", params)
+          .then((response) => {
+            console.log(response);
+            //this.$router.push("/");
+            //location.reload();
+          })
+          .catch(function(error) {
+            console.log("ERREUR", error);
+          });
       }
     },
     formValider() {
@@ -49,7 +59,7 @@ export default {
         this.errors.push("Remplir le champ Nom");
       }
       if (!this.formLang.logo) {
-        this.errors.push("Remplir le champ Nom");
+        this.errors.push("Remplir le champ logo");
       }
 
       return this.errors.length ? false : true;
