@@ -10,13 +10,13 @@
       <br />
       <input v-model="formLang.logo" type="text" />
       <br /><br />
-      <ul v-if="errors.length">
-        <li class="text-danger" v-for="error in errors" :key="error">
-          {{ error }}
-        </li>
-      </ul>
       <button>Ajouter</button>
     </form>
+    <ul v-if="errors.length">
+      <li class="text-danger" v-for="error in errors" :key="error">
+        {{ error }}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -37,16 +37,14 @@ export default {
     ValiderCréation() {
       if (this.formValider()) {
         const params = new FormData();
-        console.log(this.formLang.logo);
-        console.log(this.formLang.nom);
         params.append("logo", this.formLang.logo);
         params.append("nom", this.formLang.nom);
         axios
           .post("create/createLanguageProgrammation.php", params)
           .then((response) => {
             console.log(response);
-            //this.$router.push("/");
-            //location.reload();
+            this.$router.push("/");
+            location.reload();
           })
           .catch(function(error) {
             console.log("ERREUR", error);

@@ -13,7 +13,12 @@
       <button @click="avitiveModif()"><i class="fas fa-pen"></i></button>
     </div>
     <div v-if="afficherModification">
-      <input type="text" v-model="item.anneeObtention" />
+      <input
+        type="number"
+        min="1990"
+        max="2021"
+        v-model="item.anneeObtention"
+      />
       <input type="text" v-model="item.intitule" />
       <input type="text" v-model="item.lieu" />
       <input type="text" v-model="item.ville" />
@@ -21,6 +26,15 @@
         <i class="fas fa-check"></i>
       </button>
       <button @click="deactiveModif()"><i class="fas fa-times"></i></button>
+    </div>
+    <div v-if="afficherConfirmerEffecement">
+      <p>Voulez-vous vraiment effacer?</p>
+      <button @click="effacerItem()">
+        <i class="fas fa-check"></i>
+      </button>
+      <button @click="deactiveModif()">
+        <i class="fas fa-times"></i>
+      </button>
     </div>
   </div>
 </template>
@@ -31,31 +45,13 @@ export default {
   props: { item: Object, idIndex: Number },
   data() {
     return {
+      afficherConfirmerEffecement: false,
       afficherModification: false,
     };
   },
   methods: {
     messageConfirmerEffecement() {
-      this.$swal
-        .fire({
-          text: "Voulez-vous effacer ce languague programmation?",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "oui,supprimer!",
-          position: "center",
-        })
-        .then((result) => {
-          if (result.isConfirmed) {
-            this.effacerItem();
-            this.$Swal.fire(
-              "Deleted!",
-              "Your file has been deleted.",
-              "success"
-            );
-          }
-        });
+      return (this.afficherConfirmerEffecement = true);
     },
     effacerItem() {
       const parmas = new FormData();

@@ -14,8 +14,8 @@
     </div>
     <div v-if="afficherModification">
       <p>Modifier l'experience pro :</p>
-      <input type="text" v-model="item.dateDebut" />
-      <input type="text" v-model="item.dateFin" />
+      <input type="date" v-model="item.dateDebut" />
+      <input type="date" v-model="item.dateFin" />
       <input type="text" v-model="item.intitule" />
       <input type="text" v-model="item.ville" />
       <input type="text" v-model="item.lieu" />

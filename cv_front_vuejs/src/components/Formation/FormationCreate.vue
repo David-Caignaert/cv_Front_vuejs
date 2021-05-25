@@ -8,7 +8,12 @@
       <br /><br />
       <label>Année Obtention</label>
       <br />
-      <input v-model="formFormation.anneeObtention" type="text" />
+      <input
+        v-model="formFormation.anneeObtention"
+        type="number"
+        max="2021"
+        min="1990"
+      />
       <br /><br />
       <label>Intitulé de la formation</label>
       <br />
@@ -18,18 +23,18 @@
       <br />
       <input v-model="formFormation.lieu" type="text" />
       <br /><br />
-      <ul v-if="errors.length">
-        <li class="text-danger" v-for="error in errors" :key="error">
-          {{ error }}
-        </li>
-      </ul>
       <button>Ajouter</button>
     </form>
+    <ul v-if="errors.length">
+      <li class="text-danger" v-for="error in errors" :key="error">
+        {{ error }}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import axios from "axios";
 
 export default {
   data() {
@@ -44,13 +49,23 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["createFormation"]),
     ValiderCréation() {
       if (this.formValider()) {
-        this.createFormation({ ...this.formFormation });
-
-        this.$router.push("/");
-        location.reload();
+        const params = new FormData();
+        params.append("ville", this.formFormation.ville);
+        params.append("anneeObtention", this.formFormation.anneeObtention);
+        params.append("intitule", this.formFormation.intitule);
+        params.append("lieu", this.formFormation.lieu);
+        axios
+          .post("create/createFormation.php", params)
+          .then((response) => {
+            console.log(response);
+            this.$router.push("/");
+            location.reload();
+          })
+          .catch(function(error) {
+            console.log("ERREUR", error);
+          });
       }
     },
     formValider() {

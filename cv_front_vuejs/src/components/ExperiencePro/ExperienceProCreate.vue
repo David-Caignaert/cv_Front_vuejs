@@ -22,18 +22,19 @@
       <br />
       <input v-model="formExperiencePro.ville" type="text" />
       <br /><br />
-      <ul v-if="errors.length">
-        <li class="text-danger" v-for="error in errors" :key="error">
-          {{ error }}
-        </li>
-      </ul>
       <button>Ajouter</button>
     </form>
+    <ul v-if="errors.length">
+      <li class="text-danger" v-for="error in errors" :key="error">
+        {{ error }}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -48,13 +49,24 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["createExperiencePro"]),
     ValiderCréation() {
       if (this.formValider()) {
-        this.createExperiencePro({ ...this.formExperiencePro });
-
-        this.$router.push("/");
-        location.reload();
+        const params = new FormData();
+        params.append("dateDebut", this.formExperiencePro.dateDebut);
+        params.append("dateFin", this.formExperiencePro.dateFin);
+        params.append("intitule", this.formExperiencePro.intitule);
+        params.append("ville", this.formExperiencePro.ville);
+        params.append("lieu", this.formExperiencePro.lieu);
+        axios
+          .post("create/createExperiencePro.php", params)
+          .then((response) => {
+            console.log(response);
+            this.$router.push("/");
+            location.reload();
+          })
+          .catch(function(error) {
+            console.log("ERREUR", error);
+          });
       }
     },
     formValider() {

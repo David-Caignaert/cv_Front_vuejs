@@ -6,18 +6,18 @@
       <br />
       <input v-model="formCentre.intitule" type="text" />
       <br /><br />
-      <ul v-if="errors.length">
-        <li class="text-danger" v-for="error in errors" :key="error">
-          {{ error }}
-        </li>
-      </ul>
       <button>Ajouter</button>
     </form>
+    <ul v-if="errors.length">
+      <li class="text-danger" v-for="error in errors" :key="error">
+        {{ error }}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import axios from "axios";
 
 export default {
   data() {
@@ -29,13 +29,20 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["createCentreInteret"]),
     ValiderCréation() {
       if (this.formValider()) {
-        this.createCentreInteret({ ...this.formCentre });
-
-        this.$router.push("/");
-        location.reload();
+        const params = new FormData();
+        params.append("intitule", this.formCentre.intitule);
+        axios
+          .post("create/createCentreInteret.php", params)
+          .then((response) => {
+            console.log(response);
+            this.$router.push("/");
+            location.reload();
+          })
+          .catch(function(error) {
+            console.log("ERREUR", error);
+          });
       }
     },
     formValider() {
